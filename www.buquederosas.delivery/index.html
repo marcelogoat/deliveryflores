@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<!-- Mirrored from www.buquederosas.delivery/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Sep 2026 21:08:05 GMT -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google tag (gtag.js) — Google Ads + Analytics -->
+  <script>/* gtag.js adiado p/ load/1a interacao: nao trava LCP/TBT. Eventos enfileiram no dataLayer (stub abaixo) e disparam quando sobe. Conversao na obrigado fica segura. */(function(){var g=!1;function L(){if(g)return;g=!0;var s=document.createElement("script");s.async=!0;s.src="https://www.googletagmanager.com/gtag/js?id=AW-18194665316";document.head.appendChild(s)}if("complete"===document.readyState)L();else addEventListener("load",L);["pointerdown","keydown","touchstart","scroll"].forEach(function(e){addEventListener(e,L,{once:!0,passive:!0})})})();</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "AW-18194665316");
+    gtag("config", "AW-18194665571");
+    gtag("config", "G-BY8HWSZJYQ");
+  </script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <title>Buquê de Rosas · Flores e buquês frescos por floricultura parceira</title>
+  <meta name="description" content="Buquês, rosas e arranjos montados por floriculturas parceiras na cidade de destino. Peça online, pague no PIX e acompanhe a entrega. Frete grátis na entrega padrão; modos expressos onde houver cobertura.">
+  <link rel="canonical" href="index.html">
+  <meta name="theme-color" content="#fafaf7">
+  <meta property="og:title" content="Buquê de Rosas · Flores por floricultura parceira, pagamento via PIX">
+  <meta property="og:description" content="Flores preparadas por floriculturas parceiras na cidade de destino. Pagamento via PIX. Frete grátis na entrega padrão; modos expressos onde houver cobertura.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://buquederosas.delivery/">
+
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/librecaslondisplay-latin.woff2" crossorigin>
+  <link rel="preload" as="image" href="cdn/catalog/proprias/315-hero3860.webp?v=1" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"OnlineStore","name":"Buquê de Rosas","url":"https://buquederosas.delivery/","logo":"https://buquederosas.delivery/favicon-32.png","email":"contato@buquederosas.delivery","legalName":"59.052.477 MONALIZA DAGRIMA FERNANDES","taxID":"59.052.477/0001-63"}
+  </script>
+
+  <style>
+    /* ------------------------------------------------------------------
+       Estilos específicos da home (SCREEN 1 do redesign-board)
+       ------------------------------------------------------------------ */
+
+    /* Banner Entrega Expressa (classes .express vêm do main.css) ---------- */
+    .hero-express{ padding-top:16px; }
+
+    /* Menu de categorias (tiles redondos) --------------------------------- */
+    .catmenu{
+      display:flex; gap:6px; padding:16px 0 2px;
+      overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;
+      -webkit-overflow-scrolling:touch;
+    }
+    .catmenu::-webkit-scrollbar{ display:none; }
+    .catmenu__item{
+      flex:none; display:flex; flex-direction:column; align-items:center; gap:7px;
+      width:72px; font-size:11px; font-weight:700; color:var(--ink-soft);
+      -webkit-tap-highlight-color:transparent;
+    }
+    .catmenu__icon{
+      width:54px; height:54px; border-radius:18px; flex:none;
+      background:var(--accent-soft); color:var(--accent);
+      display:flex; align-items:center; justify-content:center;
+      transition:background .18s ease, color .18s ease, transform .12s ease;
+    }
+    .catmenu__icon svg{ width:25px; height:25px; }
+    .catmenu__item:hover .catmenu__icon{ background:#ffe4e8; }
+    .catmenu__item:active .catmenu__icon{ transform:scale(.95); }
+    .catmenu__item--dark{ color:var(--accent); }
+    .catmenu__item--dark .catmenu__icon{ background:var(--ink); color:#fff; }
+    .catmenu__item.is-active .catmenu__icon{ background:var(--accent); color:#fff; }
+    .catmenu__item.is-active{ color:var(--accent); }
+    @media (min-width:640px){
+      .catmenu{ gap:22px; }
+      .catmenu__item:first-child{ margin-left:auto; }
+      .catmenu__item:last-child{ margin-right:auto; }
+    }
+
+    /* Garantia de frescor -------------------------------------------------- */
+    .fresh{
+      margin-top:12px;
+      display:flex; gap:11px; align-items:center;
+      padding:12px 14px;
+      background:var(--card); border:1px solid var(--line); border-radius:var(--r-sm);
+    }
+    .fresh > svg{ width:22px; height:22px; color:var(--success); flex:none; }
+    .fresh strong{ display:block; font-size:13px; font-weight:800; }
+    .fresh span{ font-size:11.5px; color:var(--muted); line-height:1.4; }
+
+    /* Toolbar: busca + ordenação ------------------------------------------ */
+    .toolbar{ padding-top:22px; }
+    .toolbar__row{ display:flex; gap:10px; }
+    .searchbox{ position:relative; flex:1; display:flex; align-items:center; }
+    .searchbox svg{
+      position:absolute; left:14px; width:18px; height:18px;
+      color:var(--muted-warm); pointer-events:none;
+    }
+    .searchbox input{ padding-left:42px; border-radius:999px; background:var(--card); }
+    .searchbox input::-webkit-search-cancel-button{ -webkit-appearance:none; }
+    .toolbar select{
+      flex:none; width:auto; border-radius:999px; font-weight:700; font-size:14px;
+      padding-right:36px;
+      appearance:none; -webkit-appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:right 12px center; background-size:16px;
+    }
+    .toolbar .chips{ margin-top:12px; }
+
+    /* Trilha por ocasião ---------------------------------------------------- */
+    .occasions{ margin-top:20px; }
+    .occasions h2{ font-size:15px; font-weight:800; letter-spacing:-.01em; margin-bottom:11px; }
+
+    /* Rail "Mais pedidos" (classes .rail__* vêm do main.css) ---------------- */
+    .rail-sec{ margin-top:24px; }
+
+    /* Cabeçalho do catálogo + seções por categoria -------------------------- */
+    .catalog-head{
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+      margin-top:26px;
+    }
+    .catalog-head h2{ font-size:24px; }
+    .catalog-head p{ font-size:12.5px; font-weight:700; margin:0; }
+    .cat{ margin-top:26px; }
+    .cat__head{ display:flex; align-items:baseline; gap:10px; margin-bottom:13px; }
+    .cat__head h2{
+      font-family:var(--font-display); font-weight:400;
+      font-size:21px; letter-spacing:-.01em;
+    }
+    .cat__head .muted{ font-size:13px; font-weight:700; }
+
+    /* Card do redesign: kicker, rating, preço vinho + quick-add ------------- */
+    .pitem__body{ gap:4px; padding:11px 12px 12px; }
+    .pitem__kicker{
+      font-size:10px; font-weight:800; letter-spacing:.07em; text-transform:uppercase;
+      color:var(--accent);
+    }
+    .pitem__name{ font-size:13px; }
+    .pitem__rate{ margin:1px 0 2px; }
+    .pitem__buy{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:8px;
+      margin-top:auto; padding-top:5px;
+    }
+    .pitem__prices{ display:flex; flex-direction:column; gap:1px; margin-top:0; }
+    .pitem .price{ color:var(--accent); font-size:16px; }
+    .pitem .price--old{ font-size:11.5px; }
+    .pitem__soldnote{ font-size:12px; font-weight:700; color:var(--muted-warm); }
+    .qadd{
+      width:36px; height:36px; border-radius:11px; flex:none;
+      background:var(--ink); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .15s ease, transform .12s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .qadd:hover{ background:var(--action-hover); }
+    .qadd:active{ transform:scale(.94); }
+    .qadd svg{ width:18px; height:18px; }
+    .qadd.is-added{ background:var(--success); }
+    .qadd[disabled]{ pointer-events:none; }
+    .pitem__sold{
+      position:absolute; inset:0; z-index:1;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(250,250,247,.55);
+    }
+    .pitem__sold span{
+      background:var(--ink); color:#fff;
+      font-size:11.5px; font-weight:800;
+      padding:6px 12px; border-radius:999px;
+    }
+
+    /* Sentinela / carregar mais --------------------------------------------- */
+    .loadmore{ padding:26px 0 8px; }
+    .loadmore .pgrid > div{ aspect-ratio:4/5; border-radius:var(--r); }
+
+    /* Entrada suave dos cards ------------------------------------------------ */
+    @keyframes card-in{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+    .pitem{ animation:card-in .4s ease backwards; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar" data-shell="topbar"></header>
+
+  <!-- Banner do herói: frete grátis na entrega padrão, floricultura parceira -->
+  <section class="container hero-express" aria-labelledby="hero-title">
+    <div class="express">
+      <div class="express__body">
+        <span class="express__pill">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
+          Frete grátis na entrega padrão
+        </span>
+        <h1 id="hero-title" class="express__title">Flores frescas para presentear<span class="sr-only">, Buquê de Rosas</span></h1>
+        <p class="express__text" data-paycopy="Surpreenda quem você ama com flores frescas montadas por uma floricultura parceira da cidade de destino. Você pede online, paga com PIX ou cartão e acompanha o pedido; o prazo aparece pelo CEP no checkout.">Surpreenda quem você ama com flores frescas montadas por uma floricultura parceira da cidade de destino. Você pede online, paga via PIX e acompanha o pedido; o prazo aparece pelo CEP no checkout.</p>
+        <a class="express__cta" href="#catalogo">Pedir agora</a>
+      </div>
+      <div class="express__media">
+        <img src="cdn/catalog/proprias/315-hero3860.webp?v=1" alt="Buquê de rosas colombianas com eucalipto" width="360" height="300" loading="eager" fetchpriority="high" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu de categorias (tiles) — filtram a vitrine -->
+  <section class="container" aria-label="Categorias em destaque">
+    <div class="catmenu">
+      <button type="button" class="catmenu__item" data-qcat="Rosas">
+        <span class="catmenu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 13c3 0 5-2 5-5 0-1.5-.8-3-2-4-.5 1.2-1.6 2-3 2s-2.5-.8-3-2c-1.2 1-2 2.5-2 4 0 3 2 5 5 5Z"/><path d="M12 13v8"/><path d="M12 18c-2.5 0-4.5-1.5-5-4 2.5 0 4.5 1.5 5 4Z"/><path d="M12 18c2.5 0 4.5-1.5 5-4-2.5 0-4.5 1.5-5 4Z"/></svg></span>
+        Rosas
+      </button>
+      <button type="button" class="catmenu__item" data-qcat="Buquês">
+        <span class="catmenu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c2 3 2 6 0 9-2-3-2-6 0-9ZM7 8c3 1 4 4 4 7-3-1-4-4-4-7ZM17 8c-3 1-4 4-4 7 3-1 4-4 4-7ZM12 12v9"/></svg></span>
+        Buquês
+      </button>
+      <button type="button" class="catmenu__item" data-qcat="Orquídeas">
+        <span class="catmenu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 9c0-3 2-5 2-5M12 9c0-3-2-5-2-5M15 12c3 0 5-2 5-2M9 12c-3 0-5-2-5-2M12 15c0 3 2 5 2 5M12 15c0 3-2 5-2 5M15 12c3 0 5 2 5 2M9 12c-3 0-5 2-5 2"/></svg></span>
+        Orquídeas
+      </button>
+      <button type="button" class="catmenu__item" data-qcat="Kits e Presentes">
+        <span class="catmenu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v8H4v-8M2 8h20v4H2zM12 8V4M12 8H7.5a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8ZM12 8h4.5a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8Z"/></svg></span>
+        Presentes
+      </button>
+      <button type="button" class="catmenu__item catmenu__item--dark" data-qcat="__promo">
+        <span class="catmenu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 11 3.8a2 2 0 0 0-1.4-.6H4v5.6a2 2 0 0 0 .6 1.4l9.6 9.6a2 2 0 0 0 2.8 0l3.6-3.6a2 2 0 0 0 0-2.8Z"/><circle cx="8" cy="8" r="1.2"/></svg></span>
+        Promoções
+      </button>
+    </div>
+  </section>
+
+  <!-- Garantia de frescor -->
+  <section class="container" aria-label="Garantia de frescor">
+    <div class="fresh">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4 3 7 7 9 4-2 7-5 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+      <div>
+        <strong>Garantia de frescor</strong>
+        <span>Flores montadas no dia, direto da floricultura parceira.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trilha por ocasião -->
+  <section class="container occasions" aria-label="Compre por ocasião">
+    <h2>Para qual ocasião?</h2>
+    <div class="chips" data-occasions></div>
+  </section>
+
+  <!-- Coleção "Mais pedidos" (curadoria do catálogo real) -->
+  <section class="container rail-sec" data-rail-sec aria-labelledby="rail-title" hidden>
+    <div class="rail__head">
+      <h2 id="rail-title" class="rail__title">Mais pedidos</h2>
+      <a class="rail__link" href="#catalogo" data-rail-all>Ver todos</a>
+    </div>
+    <div class="rail__track" data-rail></div>
+  </section>
+
+  <!-- Toolbar: busca, ordenação e categorias -->
+  <section class="toolbar container" id="catalogo" aria-label="Buscar e filtrar produtos">
+    <div class="toolbar__row">
+      <label class="searchbox" for="busca">
+        <span class="sr-only">Buscar produtos</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+        <input id="busca" type="search" data-search placeholder="Buscar rosas, orquídeas, cestas…" autocomplete="off">
+      </label>
+      <label class="sr-only" for="ordenar">Ordenar por</label>
+      <select id="ordenar" data-sort>
+        <option value="">Em destaque</option>
+        <option value="menor">Menor preço</option>
+        <option value="maior">Maior preço</option>
+      </select>
+    </div>
+    <div class="chips" data-cats aria-label="Categorias"></div>
+  </section>
+
+  <!-- Catálogo (renderizado por home.js a partir de /data/catalog.json) -->
+  <main class="container" aria-label="Catálogo de produtos">
+    <div class="catalog-head">
+      <h2 class="title-serif">Entregamos hoje</h2>
+      <p class="muted" data-count aria-live="polite"></p>
+    </div>
+    <div data-catalog>
+      <div class="pgrid" style="margin-top:18px" aria-hidden="true">
+        <div class="skeleton" style="aspect-ratio:4/5;border-radius:var(--r)"></div>
+        <div class="skeleton" style="aspect-ratio:4/5;border-radius:var(--r)"></div>
+        <div class="skeleton" style="aspect-ratio:4/5;border-radius:var(--r)"></div>
+        <div class="skeleton" style="aspect-ratio:4/5;border-radius:var(--r)"></div>
+        <div class="skeleton" style="aspect-ratio:4/5;border-radius:var(--r)"></div>
+        <div class="skeleton" style="aspect-ratio:4/5;border-radius:var(--r)"></div>
+        <div class="skeleton" style="aspect-ratio:4/5;border-radius:var(--r)"></div>
+        <div class="skeleton" style="aspect-ratio:4/5;border-radius:var(--r)"></div>
+      </div>
+      <noscript><p class="empty">Ative o JavaScript para ver o catálogo de flores.</p></noscript>
+    </div>
+    <div class="loadmore" data-sentinel hidden aria-hidden="true">
+      <div class="pgrid">
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" data-shell="footer"></footer>
+  <nav class="footer-nav" data-shell="footer-nav" aria-label="Navegação"></nav>
+
+  <script type="module" src="assets/js/home.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"f866df7b9ff343a4b0c1271b985c60d6","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from www.buquederosas.delivery/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Sep 2026 21:08:07 GMT -->
+</html>

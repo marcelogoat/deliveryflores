@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buquê de Rosas - Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #8B1D3B;
+            --bg-color: #FBFBF9; /* Warm off-white */
+            --text-main: #222222;
+            --text-light: #777777;
+            --border-color: #E8E8E8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 80px; /* Space for bottom nav */
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background-color: var(--primary-red);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-btn {
+            font-size: 20px;
+            color: var(--text-main);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-icon {
+            color: #E27B7B;
+            font-size: 24px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            color: #E27B7B;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            font-size: 20px;
+            color: var(--text-main);
+            background: none;
+            border: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background: var(--primary-red);
+            color: white;
+            font-size: 11px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        /* Hero Card */
+        .hero-card {
+            background-color: var(--primary-red);
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+            min-height: 250px;
+            box-shadow: 0 10px 20px rgba(139, 29, 59, 0.15);
+        }
+
+        .hero-content {
+            width: 65%;
+            z-index: 2;
+        }
+
+        .shipping-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            font-size: 11px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-red);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: -10px;
+            bottom: 0px;
+            width: 140px;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 65px;
+            cursor: pointer;
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #FFF5F7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-red);
+            font-size: 20px;
+        }
+
+        .category-item.active .category-icon {
+            background: black;
+            color: white;
+        }
+
+        .category-item.active .category-text {
+            color: var(--primary-red);
+            font-weight: 600;
+        }
+
+        .category-text {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Guarantee Box */
+        .guarantee-box {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .guarantee-icon {
+            color: #10B981;
+            font-size: 20px;
+        }
+
+        .guarantee-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: black;
+        }
+
+        .guarantee-desc {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Title */
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: black;
+        }
+        
+        .section-title-serif {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: black;
+        }
+
+        /* Horizontal Tags */
+        .tags-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 25px;
+            padding-bottom: 5px;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .tags-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .tag {
+            padding: 12px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            background: white;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            cursor: pointer;
+            color: black;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #E5E7EB;
+        }
+
+        .product-details {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            color: var(--primary-red);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price-list {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .add-btn {
+            background: black;
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0 20px 0;
+            border-top: 1px solid var(--border-color);
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #6B7280;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+        }
+
+        .nav-item.active {
+            color: var(--primary-red);
+        }
+
+        /* Modal Location */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(2px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            padding: 30px 20px;
+            width: 90%;
+            max-width: 320px;
+            text-align: center;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-icon {
+            font-size: 32px;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .modal-location {
+            font-size: 18px;
+            color: black;
+            font-weight: 700;
+            margin-bottom: 25px;
+            min-height: 24px; /* para estado de carregamento */
+        }
+
+        .modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-modal-primary {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-modal-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Location Modal Popup -->
+    <div class="modal-overlay" id="locationModal">
+        <div class="modal-content">
+            <div class="modal-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="modal-title">Você está em:</div>
+            <div class="modal-location" id="userLocation">Localizando...</div>
+            <div class="modal-actions">
+                <button class="btn-modal-primary" id="btnConfirmLocation">Sim, continuar</button>
+                <button class="btn-modal-secondary" id="btnChangeLocation">Não, escolher outra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <i class="fa-solid fa-motorcycle"></i>
+        Frete grátis na entrega padrão
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <a href="#" class="logo">
+                <i class="fa-solid fa-rose logo-icon"></i>
+                <div class="logo-text">
+                    <span class="logo-title">Buquê de Rosas</span>
+                    <span class="logo-subtitle">delivery</span>
+                </div>
+            </a>
+        </div>
+        <div class="header-right">
+            <button class="icon-btn"><i class="fa-regular fa-user"></i></button>
+            <button class="icon-btn">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <br>
+        <h2 class="section-title-serif" style="margin-top: 10px;">Kits e Presentes</h2>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+            <div style="background:#E5E7EB; height:180px; border-radius:16px; width:100%;"></div>
+            <div style="background:#E5E7EB; height:180px; border-radius:16px; width:100%;"></div>
+            <div style="background:#E5E7EB; height:180px; border-radius:16px; width:100%;"></div>
+            <div style="background:#E5E7EB; height:180px; border-radius:16px; width:100%;"></div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            Início
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Buscar
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Sacola
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-file-lines"></i>
+            Pedidos
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-circle-question"></i>
+            Ajuda
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('locationModal');
+            const locationText = document.getElementById('userLocation');
+            const btnConfirm = document.getElementById('btnConfirmLocation');
+            const btnChange = document.getElementById('btnChangeLocation');
+
+            // Verifica se o modal já foi respondido
+            if (!localStorage.getItem('locationModalShown')) {
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 300);
+            }
+
+            // API gratuita de geolocalização via IP (GeoJS)
+            fetch('https://get.geojs.io/v1/ip/geo.json')
+                .then(response => response.json())
+                .then(data => {
+                    if(data && data.city && data.region) {
+                        locationText.textContent = `${data.city} - ${data.region}`;
+                    } else {
+                        locationText.textContent = "Localização não encontrada";
+                    }
+                })
+                .catch(err => {
+                    console.error('Erro ao buscar IP:', err);
+                    locationText.textContent = "Erro ao localizar";
+                });
+
+            // Fechar o modal quando clicar em Sim
+            btnConfirm.addEventListener('click', () => {
+                modal.classList.remove('active');
+                localStorage.setItem('locationModalShown', 'true');
+            });
+
+            // Ação ao clicar em Não (fictícia por enquanto)
+            btnChange.addEventListener('click', () => {
+                locationText.textContent = "Aguardando seleção manual...";
+                setTimeout(() => {
+                    modal.classList.remove('active');
+                    localStorage.setItem('locationModalShown', 'true');
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>

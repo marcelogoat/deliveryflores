@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buquê de Rosas - Produto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #8B1D3B;
+            --bg-color: #FBFBF9;
+            --text-main: #222222;
+            --text-light: #777777;
+            --border-color: #E8E8E8;
+            --green-badge: #C6F6D5;
+            --green-text: #22543D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 140px; /* Espaço para o botão flutuante e nav bar */
+        }
+
+        /* Top Banner & Header (Mesmo do index) */
+        .top-banner {
+            background-color: var(--primary-red);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .menu-btn, .icon-btn { font-size: 20px; color: var(--text-main); background: none; border: none; cursor: pointer; }
+        .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-main); }
+        .logo-icon { color: #E27B7B; font-size: 24px; }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title { font-family: 'Playfair Display', serif; font-size: 18px; line-height: 1; }
+        .logo-subtitle { color: #E27B7B; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; }
+        .header-right { display: flex; align-items: center; gap: 15px; }
+
+        .container {
+            padding: 15px 20px;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        .breadcrumbs a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        .breadcrumbs span {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Product Main Info */
+        .product-main-img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .product-category {
+            color: var(--primary-red);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 400;
+            color: black;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .badge-green {
+            background-color: var(--green-badge);
+            color: var(--green-text);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .payment-info {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        .payment-info strong {
+            color: var(--text-main);
+        }
+
+        /* Promo Box */
+        .promo-box {
+            background-color: #FFF0F4;
+            border: 1px solid #FCD6E1;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--primary-red);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .promo-icon {
+            background: var(--primary-red);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Card Message */
+        .card-message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .card-message-header i {
+            color: var(--primary-red);
+        }
+        .card-message-header span {
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        
+        .message-textarea {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            min-height: 100px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            resize: none;
+            margin-bottom: 5px;
+            background: white;
+        }
+        .message-textarea::placeholder {
+            font-style: italic;
+            color: #999;
+        }
+        .char-count {
+            text-align: right;
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        /* Upsell Section (Complete seu presente) */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: black;
+        }
+
+        .upsell-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            scrollbar-width: none;
+        }
+        .upsell-container::-webkit-scrollbar { display: none; }
+
+        .upsell-card {
+            min-width: 140px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .upsell-img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .upsell-title {
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 5px;
+            flex-grow: 1;
+        }
+        .upsell-price {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .upsell-btn {
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        .info-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        .info-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .info-item i {
+            color: var(--primary-red);
+            font-size: 16px;
+            margin-top: 2px;
+        }
+        .info-text {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        .info-text strong {
+            color: var(--text-main);
+        }
+        .info-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 15px 0;
+        }
+
+        /* Description */
+        .description-content {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        .description-content strong {
+            color: var(--text-main);
+        }
+
+        /* Same category divider */
+        .divider-title {
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: black;
+            margin-bottom: 20px;
+        }
+        .divider-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border-color);
+            margin-left: 15px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #E5E7EB;
+        }
+
+        .product-details {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            color: var(--primary-red);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price-list {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .add-btn {
+            background: black;
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #E5E7EB;
+        }
+
+        .product-details {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            color: var(--primary-red);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price-list {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .add-btn {
+            background: black;
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+
+        /* Bottom Action Bar */
+        .bottom-action-bar {
+            position: fixed;
+            bottom: 65px; /* Above the bottom nav */
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            z-index: 99;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+        }
+        .total-box {
+            display: flex;
+            flex-direction: column;
+        }
+        .total-label {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        .total-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+        .btn-add-cart {
+            background: black;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        /* Bottom Navigation (Mesmo do index) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0 20px 0;
+            border-top: 1px solid var(--border-color);
+            z-index: 100;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #6B7280;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .nav-item i { font-size: 20px; }
+        .nav-item.active { color: var(--primary-red); }
+
+    </style>
+</head>
+<body>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <i class="fa-solid fa-motorcycle"></i>
+        Frete grátis na entrega padrão
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-rose logo-icon"></i>
+                <div class="logo-text">
+                    <span class="logo-title">Buquê de Rosas</span>
+                    <span class="logo-subtitle">delivery</span>
+                </div>
+            </a>
+        </div>
+        <div class="header-right">
+            <button class="icon-btn"><i class="fa-regular fa-user"></i></button>
+            <button class="icon-btn">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="#">Início</a> <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin: 0 5px;"></i> 
+            <a href="#">Rosas</a> <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin: 0 5px;"></i> 
+            <span>Buquês de Rosas colombian...</span>
+        </div>
+
+        <!-- Product Image -->
+        <img src="https://images.unsplash.com/photo-1591886960571-74d43a9d4166?q=80&w=500&auto=format&fit=crop" alt="Buquê de Rosas colombianas Branca" class="product-main-img">
+
+        <!-- Product Info -->
+        <div class="product-category">ROSAS</div>
+        <h1 class="product-title">Buquês de Rosas colombianas Branca</h1>
+        
+        <div class="price-row">
+            <span class="product-price">R$ 59,90</span>
+            <span class="badge-green">Disponível hoje</span>
+        </div>
+
+        <p class="payment-info">Pagamento via <strong>PIX ou cartão</strong>, você confirma tudo antes de pagar.</p>
+
+        <!-- Promo Box -->
+        <div class="promo-box">
+            <div class="promo-icon"><i class="fa-solid fa-bolt"></i></div>
+            Frete grátis na entrega padrão
+        </div>
+
+        <!-- Gift Message -->
+        <div class="card-message-header">
+            <i class="fa-regular fa-envelope"></i> Mensagem do cartão <span>(opcional - grátis)</span>
+        </div>
+        <textarea class="message-textarea" placeholder="Escreva uma mensagem especial para acompanhar o buquê..."></textarea>
+        <div class="char-count">0/200</div>
+
+        <!-- Upsell -->
+        <h2 class="section-title">Complete seu presente</h2>
+        <div class="upsell-container">
+            <!-- Item 1 -->
+            <div class="upsell-card">
+                <img src="https://images.unsplash.com/photo-1548842223-94c63bf18ff1?q=80&w=200&auto=format&fit=crop" alt="Chocolate Ferrero" class="upsell-img">
+                <div class="upsell-title">CHOCOLATE FERRERO ROCHER COM 3UN</div>
+                <div class="upsell-price">+ R$ 7,90</div>
+                <button class="upsell-btn">Adicionar</button>
+            </div>
+            <!-- Item 2 -->
+            <div class="upsell-card">
+                <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?q=80&w=200&auto=format&fit=crop" alt="Chocolate Ferrero 4un" class="upsell-img">
+                <div class="upsell-title">CHOCOLATE FERRERO ROCHER COM 4 UND 50G</div>
+                <div class="upsell-price">+ R$ 14,90</div>
+                <button class="upsell-btn">Adicionar</button>
+            </div>
+            <!-- Item 3 -->
+            <div class="upsell-card">
+                <img src="https://images.unsplash.com/photo-1549007953-2f2fac0b0467?q=80&w=200&auto=format&fit=crop" alt="Chocolate Lindt" class="upsell-img">
+                <div class="upsell-title">Caixa de Chocolate Lindt Lindor - 37g</div>
+                <div class="upsell-price">+ R$ 17,90</div>
+                <button class="upsell-btn">Adicionar</button>
+            </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="info-box">
+            <div class="info-item">
+                <i class="fa-solid fa-truck"></i>
+                <div class="info-text">Entrega feita por <strong>floricultura parceira da cidade de destino</strong>, onde houver cobertura.</div>
+            </div>
+            <div class="info-divider"></div>
+            <div class="info-item">
+                <i class="fa-solid fa-qrcode"></i>
+                <div class="info-text">Pagamento por <strong>PIX ou cartão</strong>, com confirmação na tela e por e-mail.</div>
+            </div>
+            <div class="info-divider"></div>
+            <div class="info-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info-text">Precisa de ajuda ou reembolso? Fale com a gente:<br>contato@buquederosas.delivery</div>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <h2 class="section-title">Sobre este produto</h2>
+        <div class="description-content">
+            <p><strong>Buquês de Rosas colombianas Branca</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinatário, com flores frescas disponíveis na região.</p>
+            <br>
+            <p>Simbolizando paz, pureza e reverência, as rosas brancas colombianas são mundialmente reconhecidas pelo tamanho de seus botões e pela durabilidade incomparável. Cultivadas em grandes altitudes, elas florescem de forma deslumbrante, perfeitas para homenagear e celebrar ocasiões singelas, como nascimentos, condolências, e aniversários especiais.</p>
+            <br>
+            <p>O pedido é confirmado após o pagamento, e acompanhamos a entrega com você por e-mail e WhatsApp.</p>
+        </div>
+
+        <div class="divider-title">Da mesma categoria</div>
+        <!-- Product Grid -->
+        <div class="product-grid">
+            <a href="produto.html?id=114" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/114.webp?v=5" alt="Mini Buquê 3 Rosas Coloridas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Mini Buquê 3 Rosas Coloridas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 59,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=113" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/113.webp?v=5" alt="Mini Buquê 3 Rosas Brancas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Mini Buquê 3 Rosas Brancas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 59,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=104" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/104.webp?v=5" alt="Buquê 2 Rosas Azuis" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê 2 Rosas Azuis</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 59,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=105" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/105.webp?v=5" alt="Buquê 3 Rosas Brancas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê 3 Rosas Brancas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 59,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=107" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/107.webp?v=5" alt="Mini Buquê 2 Rosas Brancas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Mini Buquê 2 Rosas Brancas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 59,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=108" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/108.webp?v=5" alt="Mini Buquê 2 Rosas Amarelas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Mini Buquê 2 Rosas Amarelas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 59,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=457" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/457.webp?v=5" alt="Buquê com 3 Rosas Colombianas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê com 3 Rosas Colombianas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 59,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=110" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/110.webp?v=5" alt="Buquê 6 Rosas Amarelas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê 6 Rosas Amarelas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 79,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=142" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/142.webp?v=5" alt="Buquê delicado com rosas vermelhas e rosas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê delicado com rosas vermelhas e rosas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 69,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=190" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/190.webp?v=5" alt="Buquê de Astromélias Rosas com Embalagem Natural" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê de Astromélias Rosas com Embalagem Natural</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 59,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=141" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/141.webp?v=5" alt="Buquê elegante com rosas vermelhas e rosas claras" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê elegante com rosas vermelhas e rosas claras</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 69,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=144" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/144.webp?v=5" alt="Buquê Encanto Rosé" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê Encanto Rosé</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 79,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/202.webp?v=5" alt="Buquê com 6 Rosas Colombianas Brancas Naturais" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê com 6 Rosas Colombianas Brancas Naturais</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 79,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=419" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/419.webp?v=5" alt="Buquê de Rosas colombianas com Design Exclusivo" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê de Rosas colombianas com Design Exclusivo</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 98,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=100006" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/100006.webp?v=5" alt="Buquê de 6 Rosas Azuis Naturais Colombianos" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê de 6 Rosas Azuis Naturais Colombianos</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 89,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=100007" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/100007.webp?v=5" alt="Buquê Elegante com 6 Rosas Pretas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê Elegante com 6 Rosas Pretas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 129,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=109" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/109.webp?v=5" alt="Buquê 12 Rosas Amarelas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê 12 Rosas Amarelas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 139,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=483" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/483.webp?v=5" alt="Buquê Clássico com 12 Rosas Vermelhas Colombianas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê Clássico com 12 Rosas Vermelhas Colombianas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 157,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+            <a href="produto.html?id=212" class="product-card">
+                <img src="https://www.buquederosas.delivery/cdn/catalog/212.webp?v=5" alt="Buquê Clássico de Noiva com Rosas Vermelhas" class="product-img">
+                <div class="product-details">
+                    <div class="product-category">ROSAS</div>
+                    <div class="product-title">Buquê Clássico de Noiva com Rosas Vermelhas</div>
+                    <div class="product-bottom">
+                        <div class="product-price-list">R$ 257,90</div>
+                        <button class="add-btn" onclick="event.preventDefault();"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Bottom Action Bar (Floating) -->
+    <div class="bottom-action-bar">
+        <div class="total-box">
+            <span class="total-label">Total</span>
+            <span class="total-price">R$ 59,90</span>
+        </div>
+        <button class="btn-add-cart">
+            <i class="fa-solid fa-bag-shopping"></i> Adicionar à sacola
+        </button>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            Início
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Buscar
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Sacola
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-file-lines"></i>
+            Pedidos
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fa-regular fa-circle-question"></i>
+            Ajuda
+        </a>
+    </nav>
+
+
+    <script>
+        const productsData = [{"id": "114", "name": "Mini Buqu\u00ea 3 Rosas Coloridas", "price": "59,90", "image": "https://www.buquederosas.delivery/cdn/catalog/114.webp?v=5", "desc": "<p><strong>Mini Buqu\u00ea 3 Rosas Coloridas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por um mix vibrante e alegre de rosas coloridas para iluminar o dia de qualquer pessoa. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "113", "name": "Mini Buqu\u00ea 3 Rosas Brancas", "price": "59,90", "image": "https://www.buquederosas.delivery/cdn/catalog/113.webp?v=5", "desc": "<p><strong>Mini Buqu\u00ea 3 Rosas Brancas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por rosas brancas selecionadas, que simbolizam pureza, paz e inoc\u00eancia. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "104", "name": "Buqu\u00ea 2 Rosas Azuis", "price": "59,90", "image": "https://www.buquederosas.delivery/cdn/catalog/104.webp?v=5", "desc": "<p><strong>Buqu\u00ea 2 Rosas Azuis</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por raras rosas azuis, perfeitas para representar mist\u00e9rio, encanto e confian\u00e7a. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "105", "name": "Buqu\u00ea 3 Rosas Brancas", "price": "59,90", "image": "https://www.buquederosas.delivery/cdn/catalog/105.webp?v=5", "desc": "<p><strong>Buqu\u00ea 3 Rosas Brancas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por rosas brancas selecionadas, que simbolizam pureza, paz e inoc\u00eancia. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "107", "name": "Mini Buqu\u00ea 2 Rosas Brancas", "price": "59,90", "image": "https://www.buquederosas.delivery/cdn/catalog/107.webp?v=5", "desc": "<p><strong>Mini Buqu\u00ea 2 Rosas Brancas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por rosas brancas selecionadas, que simbolizam pureza, paz e inoc\u00eancia. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "108", "name": "Mini Buqu\u00ea 2 Rosas Amarelas", "price": "59,90", "image": "https://www.buquederosas.delivery/cdn/catalog/108.webp?v=5", "desc": "<p><strong>Mini Buqu\u00ea 2 Rosas Amarelas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por rosas amarelas super vibrantes, ideais para irradiar alegria, sucesso e amizade. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "457", "name": "Buqu\u00ea com 3 Rosas Colombianas", "price": "59,90", "image": "https://www.buquederosas.delivery/cdn/catalog/457.webp?v=5", "desc": "<p><strong>Buqu\u00ea com 3 Rosas Colombianas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por lindas flores, montadas com muito carinho. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "110", "name": "Buqu\u00ea 6 Rosas Amarelas", "price": "79,90", "image": "https://www.buquederosas.delivery/cdn/catalog/110.webp?v=5", "desc": "<p><strong>Buqu\u00ea 6 Rosas Amarelas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por rosas amarelas super vibrantes, ideais para irradiar alegria, sucesso e amizade. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "142", "name": "Buqu\u00ea delicado com rosas vermelhas e rosas", "price": "69,90", "image": "https://www.buquederosas.delivery/cdn/catalog/142.webp?v=5", "desc": "<p><strong>Buqu\u00ea delicado com rosas vermelhas e rosas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por cl\u00e1ssicas rosas vermelhas apaixonantes, o s\u00edmbolo universal da paix\u00e3o, desejo e do amor verdadeiro. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "190", "name": "Buqu\u00ea de Astrom\u00e9lias Rosas com Embalagem Natural", "price": "59,90", "image": "https://www.buquederosas.delivery/cdn/catalog/190.webp?v=5", "desc": "<p><strong>Buqu\u00ea de Astrom\u00e9lias Rosas com Embalagem Natural</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por delicadas astrom\u00e9lias, que representam amizade duradoura, lealdade e felicidade. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "141", "name": "Buqu\u00ea elegante com rosas vermelhas e rosas claras", "price": "69,90", "image": "https://www.buquederosas.delivery/cdn/catalog/141.webp?v=5", "desc": "<p><strong>Buqu\u00ea elegante com rosas vermelhas e rosas claras</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por cl\u00e1ssicas rosas vermelhas apaixonantes, o s\u00edmbolo universal da paix\u00e3o, desejo e do amor verdadeiro. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "144", "name": "Buqu\u00ea Encanto Ros\u00e9", "price": "79,90", "image": "https://www.buquederosas.delivery/cdn/catalog/144.webp?v=5", "desc": "<p><strong>Buqu\u00ea Encanto Ros\u00e9</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por rosas em tons past\u00e9is e ros\u00e9, transmitindo carinho, gratid\u00e3o e profunda admira\u00e7\u00e3o. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "202", "name": "Buqu\u00ea com 6 Rosas Colombianas Brancas Naturais \u2013 Design Elegante e Delicado", "price": "79,90", "image": "https://www.buquederosas.delivery/cdn/catalog/202.webp?v=5", "desc": "<p><strong>Buqu\u00ea com 6 Rosas Colombianas Brancas Naturais \u2013 Design Elegante e Delicado</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por rosas brancas selecionadas, que simbolizam pureza, paz e inoc\u00eancia. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "419", "name": "Buqu\u00ea de Rosas colombianas com Design Exclusivo", "price": "98,90", "image": "https://www.buquederosas.delivery/cdn/catalog/419.webp?v=5", "desc": "<p><strong>Buqu\u00ea de Rosas colombianas com Design Exclusivo</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por lindas flores, montadas com muito carinho. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "100006", "name": "Buqu\u00ea de 6 Rosas Azuis Naturais Colombianos", "price": "89,90", "image": "https://www.buquederosas.delivery/cdn/catalog/100006.webp?v=5", "desc": "<p><strong>Buqu\u00ea de 6 Rosas Azuis Naturais Colombianos</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por raras rosas azuis, perfeitas para representar mist\u00e9rio, encanto e confian\u00e7a. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "100007", "name": "Buqu\u00ea Elegante com 6 Rosas Pretas", "price": "129,90", "image": "https://www.buquederosas.delivery/cdn/catalog/100007.webp?v=5", "desc": "<p><strong>Buqu\u00ea Elegante com 6 Rosas Pretas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por exclusivas e ex\u00f3ticas rosas pretas, ideais para um presente ousado, misterioso e sofisticado. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "109", "name": "Buqu\u00ea 12 Rosas Amarelas", "price": "139,90", "image": "https://www.buquederosas.delivery/cdn/catalog/109.webp?v=5", "desc": "<p><strong>Buqu\u00ea 12 Rosas Amarelas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por rosas amarelas super vibrantes, ideais para irradiar alegria, sucesso e amizade. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "483", "name": "Buqu\u00ea Cl\u00e1ssico com 12 Rosas Vermelhas Colombianas", "price": "157,90", "image": "https://www.buquederosas.delivery/cdn/catalog/483.webp?v=5", "desc": "<p><strong>Buqu\u00ea Cl\u00e1ssico com 12 Rosas Vermelhas Colombianas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por cl\u00e1ssicas rosas vermelhas apaixonantes, o s\u00edmbolo universal da paix\u00e3o, desejo e do amor verdadeiro. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}, {"id": "212", "name": "Buqu\u00ea Cl\u00e1ssico de Noiva com Rosas Vermelhas", "price": "257,90", "image": "https://www.buquederosas.delivery/cdn/catalog/212.webp?v=5", "desc": "<p><strong>Buqu\u00ea Cl\u00e1ssico de Noiva com Rosas Vermelhas</strong> montado no dia da entrega por uma floricultura parceira na cidade do destinat\u00e1rio, com flores frescas dispon\u00edveis na regi\u00e3o.</p><br><p>Este maravilhoso arranjo \u00e9 composto por cl\u00e1ssicas rosas vermelhas apaixonantes, o s\u00edmbolo universal da paix\u00e3o, desejo e do amor verdadeiro. Elas s\u00e3o cuidadosamente selecionadas e preparadas para garantir o m\u00e1ximo de frescor, durabilidade e impacto visual, tornando-se o presente perfeito para homenagear e emocionar quem voc\u00ea ama em qualquer ocasi\u00e3o.</p><br><p>O pedido \u00e9 confirmado ap\u00f3s o pagamento, e acompanhamos a entrega com voc\u00ea por e-mail e WhatsApp.</p>"}];
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id') || '114'; // Default to first product if no id
+            
+            const product = productsData.find(p => p.id === id);
+            
+            if (product) {
+                // Update Breadcrumb
+                const bc = document.querySelector('.breadcrumbs span');
+                if(bc) bc.textContent = product.name.length > 25 ? product.name.substring(0, 25) + '...' : product.name;
+                
+                // Update Image
+                const img = document.querySelector('.product-main-img');
+                if(img) img.src = product.image;
+                
+                // Update Title
+                const title = document.querySelector('.product-title');
+                if(title) title.textContent = product.name;
+                
+                // Update Prices
+                const prices = document.querySelectorAll('.product-price, .total-price');
+                prices.forEach(el => el.textContent = 'R$ ' + product.price);
+                
+                // Update Description
+                const desc = document.querySelector('.description-content');
+                if(desc) desc.innerHTML = product.desc;
+                
+                // Update page title
+                document.title = product.name + " - Buquê de Rosas";
+            }
+        });
+    </script>
+
+</body>
+</html>
